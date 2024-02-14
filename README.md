@@ -16,7 +16,7 @@ This contract attempts to solve the following problems that arise from dividend 
 
    However, this would also generate a serious problem, as a user could claim dividends, then send their ERC20 tokens to another wallet, and claim dividends again by calling `claimRewards()`.
 
-The solution proposed in this contract:
+## The solution proposed in this contract:
 
 When the owner calls `deposit()`, a variable called `totalDividendPoints` will be updated. This variable serves as a reference for dividend distribution.
 
