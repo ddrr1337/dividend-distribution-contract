@@ -15,7 +15,7 @@ contract DividendERC20 is ERC20, Ownable {
         uint256 unclaimedBalance;
         uint256 lastDividendPoints;
     }
-    mapping(address => UserAccounts) public userAccounts; // reward token address => to user Address => to UserAccounts data
+    mapping(address => UserAccounts) public userAccounts; //user Address => to user dividend data
     uint256 public pointMultipliyer = 10 ** 18;
     uint256 public totalDividendPoints;
 
