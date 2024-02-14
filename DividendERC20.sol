@@ -13,7 +13,7 @@ contract DividendERC20 is ERC20, Ownable {
         uint256 unclaimedBalance;
         uint256 lastDividendPoints;
     }
-    mapping(address => UserAccounts) public userAccounts; // reward token address => to user Address => to UserAccounts data
+    mapping(address => UserAccounts) public userAccounts; // user Address => to user dividends data
     uint256 public pointMultipliyer = 10 ** 18;
     uint256 public totalDividendPoints;
 
@@ -26,9 +26,13 @@ contract DividendERC20 is ERC20, Ownable {
     
     }
 
-    function mint(address account, uint256 amount) public {
+    //IMPLEMENT YOUR OWN MINT FUNC, BUT REMEMBER TO UPDATE DIVIDENDS BEFORE MINT
+    function mint(address to, uint256 amount) public {
 
-        _mint(account,amount);
+        // UPADATE DIVIDENDS BEFORE MINT
+        userAccounts[to]
+            .lastDividendPoints = totalDividendPoints;
+        _mint(to, amount);
     }
 
 
@@ -121,7 +125,7 @@ contract DividendERC20 is ERC20, Ownable {
             "TokenReward transfer failed"
         );
        
-        // NO SE PUEDE LLAMAR A ESTA FUNCION SI totalASupply() == 0
+        // YOU CAN NOT CALL THIS FUNC IF totalASupply() == 0
         totalDividendPoints += ((amount *
             pointMultipliyer) / totalSupply());
 
