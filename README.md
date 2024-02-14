@@ -32,6 +32,6 @@ I have also added a useful function called `checkRewards()` for the frontend to 
 - `claimRewards()`: Users can call this function to claim their dividends.
 - `checkRewards(address user)`: Provides a way for the frontend to calculate the dividends that belong to a user.
 
-## DEPENDECIES:
+## DEPENDENCIES:
  - OpenZeppelin/openzeppelin-contracts@4.8.3/Ownable
  - OpenZeppelin/openzeppelin-contracts@4.8.3/ERC20
