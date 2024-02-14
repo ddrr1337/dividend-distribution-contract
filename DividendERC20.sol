@@ -7,13 +7,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract DividendERC20 is ERC20, Ownable {
     address public activeTokenAddress;
+    address public tester;
+
 
     /////////////DIVIDND VARIABLES////////////////////
     struct UserAccounts {
         uint256 unclaimedBalance;
         uint256 lastDividendPoints;
     }
-    mapping(address => UserAccounts) public userAccounts; // user Address => to user dividends data
+    mapping(address => UserAccounts) public userAccounts; // reward token address => to user Address => to UserAccounts data
     uint256 public pointMultipliyer = 10 ** 18;
     uint256 public totalDividendPoints;
 
@@ -21,15 +23,16 @@ contract DividendERC20 is ERC20, Ownable {
 
     constructor(
          address _activeTokenAddress
-        ) ERC20("Dividend Token", "DIV") {
-        activeTokenAddress = _activeTokenAddress;
     
+        ) ERC20("Dividend Token", "DIV") {
+        activeTokenAddress = _activeTokenAddress; 
     }
+
 
     //IMPLEMENT YOUR OWN MINT FUNC, BUT REMEMBER TO UPDATE DIVIDENDS BEFORE MINT
     function mint(address to, uint256 amount) public {
 
-        // UPADATE DIVIDENDS BEFORE MINT
+    // UPADATE DIVIDENDS BEFORE MINT
         userAccounts[to]
             .lastDividendPoints = totalDividendPoints;
         _mint(to, amount);
@@ -125,7 +128,7 @@ contract DividendERC20 is ERC20, Ownable {
             "TokenReward transfer failed"
         );
        
-        // YOU CAN NOT CALL THIS FUNC IF totalASupply() == 0
+        // YOU CAN NOT CALL THIS FUNCTION IF totalASupply() == 0
         totalDividendPoints += ((amount *
             pointMultipliyer) / totalSupply());
 

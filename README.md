@@ -31,3 +31,7 @@ I have also added a useful function called `checkRewards()` for the frontend to 
 - `depositDividends(uint256 amount)`: Allows the owner to deposit dividends. Users can then claim their share.
 - `claimRewards()`: Users can call this function to claim their dividends.
 - `checkRewards(address user)`: Provides a way for the frontend to calculate the dividends that belong to a user.
+
+## DEPENDECIES:
+ - OpenZeppelin/openzeppelin-contracts@4.8.3/Ownable
+ - OpenZeppelin/openzeppelin-contracts@4.8.3/ERC20
