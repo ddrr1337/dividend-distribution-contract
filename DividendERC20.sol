@@ -127,6 +127,10 @@ contract DividendERC20 is ERC20, Ownable {
             ),
             "TokenReward transfer failed"
         );
+        require(
+            totalSupply() > 0,
+            'Total Supply is 0'
+        );
        
         // YOU CAN NOT CALL THIS FUNCTION IF totalASupply() == 0
         totalDividendPoints += ((amount *
